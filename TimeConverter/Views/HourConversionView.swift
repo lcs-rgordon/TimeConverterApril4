@@ -23,17 +23,28 @@ struct HourConversionView: View {
                 
                 // We will unwrap the optional conversionResult if possible and show result
                 if let conversionResult = viewModel.conversionResult {
-                    Text("\(conversionResult.timeInHours)")
+                    
+                    VStack(alignment: .leading) {
+                        Text("\(conversionResult.timeInHours.formatted()) hours")
+                        
+                        HStack {
 
-                    Text("\(conversionResult.timeInMinutes)")
+                            Text("= \(conversionResult.timeInMinutes.formatted()) minutes,")
 
-                    Text("\(conversionResult.timeInSeconds)")
+                            Text("\(conversionResult.timeInSeconds.formatted()) seconds")
+
+                        }
+
+                    }
+                    .font(.title3)
+                    .frame(height: 200)
+
 
                 } else {
                   
                     ContentUnavailableView("Unable to perform conversion", systemImage: "gear.badge.questionmark", description: Text(viewModel.recoverySuggestion))
                         .frame(height: 200)
-                    
+
                 }
 
                 // INPUT
