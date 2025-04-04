@@ -58,6 +58,8 @@ class HourConversionViewModel {
             
         }
         
+        print("There are \(self.resultHistory.count) elements in the array.")
+        
     }
     
 }
