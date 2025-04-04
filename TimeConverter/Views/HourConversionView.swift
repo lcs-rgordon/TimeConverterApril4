@@ -14,24 +14,34 @@ struct HourConversionView: View {
     
     // MARK: Computed properties
     var body: some View {
-        // INPUT
-        TextField("Enter the number of hours", text: $viewModel.providedHours)
         
-        // OUTPUT
-        
-        // We will unwrap the optional conversionResult if possible and show result
-        if let conversionResult = viewModel.conversionResult {
-            Text("\(conversionResult.timeInHours)")
-
-            Text("\(conversionResult.timeInMinutes)")
-
-            Text("\(conversionResult.timeInSeconds)")
-
-        } else {
-          
-            ContentUnavailableView("Unable to perform conversion", systemImage: "gear.badge.questionmark", description: Text(viewModel.recoverySuggestion))
+        VStack {
             
+            // OUTPUT
+            
+            // We will unwrap the optional conversionResult if possible and show result
+            if let conversionResult = viewModel.conversionResult {
+                Text("\(conversionResult.timeInHours)")
+
+                Text("\(conversionResult.timeInMinutes)")
+
+                Text("\(conversionResult.timeInSeconds)")
+
+            } else {
+              
+                ContentUnavailableView("Unable to perform conversion", systemImage: "gear.badge.questionmark", description: Text(viewModel.recoverySuggestion))
+                    .frame(height: 200)
+                
+            }
+
+            // INPUT
+            TextField("Enter the number of hours", text: $viewModel.providedHours)
+                .textFieldStyle(.roundedBorder)
+            
+
+
         }
+        
 
 
     }
