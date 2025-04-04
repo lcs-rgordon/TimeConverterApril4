@@ -41,8 +41,18 @@ struct HourConversionView: View {
                     .textFieldStyle(.roundedBorder)
                 
 
+                HStack {
+                    Text("History")
+                        .bold()
+                        .font(.title3)
+                        
+                    Spacer()
+                }
+                
+                
 
             }
+            .padding()
             .navigationTitle("Time Converter")
 
         }
